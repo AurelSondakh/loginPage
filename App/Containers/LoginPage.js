@@ -19,21 +19,26 @@ const LoginPage = () => {
             'email' : `${username}`,
             'password' : `${password}`
         })
+        console.log(jsonBody)
         await fetch('http://localhost:3000/login', {
           method: 'POST',
+          headers: {'Content-Type': 'application/json',
+                'Accept': '*/*'
+                    },
           body: jsonBody
         })
           .then(response => response.json())
           .then((responseJson) => {
             console.log('Response: ', responseJson)
             setResponse(responseJson)
+            navigateProfile(responseJson)
           })
           .catch(error => console.log(error))
-          navigateProfile()
     }
 
-    const navigateProfile = () => {
-        if(response?.status) navigation.navigate('ProfilePage', { response })
+    const navigateProfile = (response) => {
+        console.log(response, 'NAVIGATE')
+        if(response?.status) navigation.navigate('ProfilePageClass', { response })
     }
 
     return (

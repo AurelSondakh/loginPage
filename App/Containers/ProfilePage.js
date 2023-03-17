@@ -1,13 +1,16 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import moment from 'moment'
 
 //lodash
 import isEmpty from 'lodash/isEmpty'
 
 const LoginPage = (props) => {
 
-    const { response } = props
+    const { response } = props?.route?.params
+    const date = moment().format('MMMM Do YYYY, h:mm:ss a')
+    console.log(date)
 
     return (
         <View style={styles.container}>
@@ -16,9 +19,17 @@ const LoginPage = (props) => {
             </View>
             <View style={styles.containerProfile}>
                 <Text style={styles.title}>
+                    Date: 
+                    <Text style={styles.content}>
+                        {date}
+                    </Text>
+                </Text>
+            </View>
+            <View style={styles.containerProfile}>
+                <Text style={styles.title}>
                     Name: 
                     <Text style={styles.content}>
-                        {response?.data?.name}
+                        {response?.data[0]?.name}
                     </Text>
                 </Text>
             </View>
@@ -26,7 +37,7 @@ const LoginPage = (props) => {
                 <Text style={styles.title}>
                     Email: 
                     <Text style={styles.content}>
-                        {response?.data?.email}
+                        {response?.data[0]?.email}
                     </Text>
                 </Text>
             </View>
@@ -34,7 +45,7 @@ const LoginPage = (props) => {
                 <Text style={styles.title}>
                     Role: 
                     <Text style={styles.content}>
-                        {response?.data?.role}
+                        {response?.data[0]?.role}
                     </Text>
                 </Text>
             </View>

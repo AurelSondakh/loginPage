@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import LandingPage from './App/Containers/LandingPage'
 import LoginPage from './App/Containers/LoginPage'
 import ProfilePage from './App/Containers/ProfilePage'
+import ProfilePageClass from './App/Containers/ProfilePageClass'
 
 const width = Dimensions.get('screen').width
 
@@ -39,7 +40,7 @@ const App = () => {
           <Stack.Navigator initialRouteName='LandingPage' headerMode='none'>
             <Stack.Screen name='LandingPage' component={LandingPage} options={horizontalAnimation} />
             <Stack.Screen name='LoginPage' component={LoginPage} options={horizontalAnimation} />
-            <Stack.Screen name='ProfilePage' component={ProfilePage} options={horizontalAnimation} />
+            <Stack.Screen name='ProfilePageClass' component={ProfilePageClass} options={horizontalAnimation} />
           </Stack.Navigator>
         </NavigationContainer>
     </SafeAreaView>
